@@ -25,7 +25,6 @@ const CaseStudyLayout = lazy(() => import('./components/CaseStudyLayout'));
 import { projects } from './data/projects';
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [currentView, setCurrentView] = useState('portfolio');
   const [activeProject, setActiveProject] = useState(null);
@@ -70,18 +69,7 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // Sync theme to root HTML element
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove('light-mode');
-    } else {
-      document.documentElement.classList.add('light-mode');
-    }
-  }, [isDarkMode]);
 
-  const toggleTheme = () => {
-    setIsDarkMode((prev) => !prev);
-  };
 
   return (
     <MotionConfig reducedMotion="user">
@@ -99,7 +87,7 @@ function App() {
             {currentView === 'portfolio' ? (
               <Layout>
                 {/* Header */}
-                <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+                <Navbar />
                 
                 {/* Main Sections */}
                 <div className="max-w-[1680px] mx-auto w-full">

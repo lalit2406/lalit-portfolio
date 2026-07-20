@@ -328,15 +328,39 @@ export default function Hero() {
 
           </div>
 
-          {/* Right Column: Engineering Status Panel */}
+          {/* Right Column: Profile Image & Engineering Status Panel */}
           <motion.div
-            className="lg:col-span-5"
+            className="lg:col-span-5 flex flex-col items-center lg:items-start space-y-6 w-full"
             initial="hidden"
             animate="visible"
             variants={animations.scaleUp}
             transition={{ duration: 0.55, ease: 'easeOut', delay: 0.65 }}
           >
-            <EngineeringStatusPanel />
+            {/* Profile Image container */}
+            <motion.div
+              animate={{
+                y: [0, -6, 0]
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="relative w-[120px] h-[120px] sm:w-[170px] sm:h-[170px] lg:w-[240px] lg:h-[240px] rounded-full p-[2px] bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 shadow-xl shadow-blue-500/10 flex-shrink-0"
+            >
+              <img
+                src="/images/profile_avatar.jpg"
+                alt="Lalit Kumar"
+                loading="lazy"
+                width="240"
+                height="240"
+                className="w-full h-full object-cover rounded-full bg-slate-950"
+              />
+            </motion.div>
+
+            <div className="w-full">
+              <EngineeringStatusPanel />
+            </div>
           </motion.div>
 
         </div>

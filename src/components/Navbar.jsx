@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { personal, navLinks } from '../data/personal';
 
-export default function Navbar({ isDarkMode, toggleTheme }) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('#about');
@@ -130,19 +130,8 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             })}
           </div>
 
-          {/* Vertical Separator */}
-          <div className="h-4 w-[1px] bg-slate-900"></div>
-
-          {/* Theme Switch & CTA */}
+          {/* CTA */}
           <div className="flex items-center space-x-4">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-slate-900 hover:bg-slate-855 border border-slate-800 text-slate-400 hover:text-white transition-all cursor-pointer"
-              aria-label="Toggle Theme"
-            >
-              {isDarkMode ? <Sun size={14} /> : <Moon size={14} />}
-            </button>
-
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
@@ -155,14 +144,6 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
 
         {/* Mobile menu toggle */}
         <div className="flex items-center space-x-3 md:hidden">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white cursor-pointer"
-            aria-label="Toggle Theme"
-          >
-            {isDarkMode ? <Sun size={15} /> : <Moon size={15} />}
-          </button>
-          
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white cursor-pointer"
