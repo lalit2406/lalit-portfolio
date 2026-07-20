@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  
+  --color-bg-dark: #050816;
+  --color-card-dark: rgba(15, 23, 42, 0.45);
+  --color-primary: #3b82f6;
+  --color-accent: #8b5cf6;
+  --color-text-secondary: #94a3b8;
+  
+  --animate-infinite-scroll: infinite-scroll 40s linear infinite;
+  
+  @keyframes infinite-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+/* Custom Base resets and overrides */
+html {
+  scroll-behavior: initial; /* Lenis handles smooth scroll */
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-dark);
+  color: #ffffff;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme configurations */
+.light-mode {
+  --color-bg-dark: #f8fafc;
+  --color-card-dark: rgba(255, 255, 255, 0.75);
+  --color-text-secondary: #475569;
+}
+
+.light-mode body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Lenis layout requirements */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Premium Custom Utilities */
+.glass-panel {
+  background: var(--color-card-dark);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.light-mode .glass-panel {
+  background: var(--color-card-dark);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+}
+
+.glass-navbar {
+  background: rgba(5, 8, 22, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.light-mode .glass-navbar {
+  background: rgba(248, 250, 252, 0.8);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.glow-bg {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.light-mode .glow-bg {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.04) 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Hide scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Selection colors */
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: #ffffff;
+}
+
+.light-mode ::selection {
+  background: rgba(59, 130, 246, 0.2);
+  color: #0f172a;
+}
+
+/* Premium noise grain utility */
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Premium Interactive Subsystems */
+.input-group:focus-within label {
+  color: #3b82f6 !important;
+  transition: color 0.22s ease-out;
+}
+
+.premium-input {
+  transition: border-color 0.22s ease-out, box-shadow 0.22s ease-out;
+}
+
+.premium-input:focus {
+  border-color: rgba(59, 130, 246, 0.8) !important;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.2);
+}
+
+.premium-link {
+  position: relative;
+  transition: color 0.2s ease-out;
+}
+
+.premium-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.22s ease-out;
+}
+
+.premium-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Accessibility: Focus visibility for keyboard navigation */
+button:focus-visible, 
+a:focus-visible, 
+input:focus-visible, 
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[role="radio"]:focus-visible,
+[role="tab"]:focus-visible {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 3px !important;
+}
+
+
+
