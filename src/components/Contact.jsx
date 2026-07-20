@@ -87,13 +87,14 @@ export default function Contact() {
 
     // Setup template params for EmailJS
     const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      project_type: formData.projectType,
-      budget: formData.budget,
-      message: formData.message,
-      to_name: personal.name,
-    };
+  from_name: formData.name,
+  from_email: formData.email,
+  subject: `${formData.projectType} | ${formData.budget}`,
+  project_type: formData.projectType,
+  budget: formData.budget,
+  message: formData.message,
+  to_name: personal.name,
+};
 
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || ''; 
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '';
@@ -255,7 +256,7 @@ export default function Contact() {
                     </div>
                     <h3 className="text-xl font-bold font-heading text-white dark:text-white">Message Transmitted!</h3>
                     <p className="text-slate-400 dark:text-slate-400 text-xs sm:text-sm max-w-sm">
-                      Thank you for reaching out, {personal.name}. We will review your project details and get back to you within 24 hours.
+                     Thank you for reaching out, {formData.name}. We will review your project details and get back to you within 24 hours.
                     </p>
                     <Button
                       onClick={() => setStatus('idle')}
@@ -347,7 +348,7 @@ export default function Contact() {
                       <span id="budget-label" className="text-[10px] uppercase font-mono tracking-widest text-slate-500 block">
                         Estimated Budget
                       </span>
-                      <div role="radiogroup" aria-labelledby="budget-label" className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                      <div role="radiogroup" aria-labelledby="budget-label" className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
                         {budgetTiers.map((tier) => (
                           <button
                             key={tier}

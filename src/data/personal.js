@@ -109,18 +109,20 @@ export const personal = {
   
   contactConfig: {
     title: 'Let\'s build something extraordinary together.',
-    desc: 'Ready to scale your application, optimize load times, or design a responsive portal? Outline your project scope and budget to get a custom roadmap and estimate.',
+    desc: "Whether you have a project idea, a freelance opportunity, or a full-time role, I'd love to hear from you. Share your requirements below, and I'll get back to you within 24 hours.",
     projectTypes: [
+      'Job Opportunity',
       'MERN Development',
       'Frontend Development',
       'Website Optimization',
       'UI/UX Consulting'
     ],
     budgetTiers: [
-      '< $1,000',
-      '$1,000 - $3,000',
-      '$3,000 - $5,000',
-      '$5,050+'
+      'Under ₹5,000 / <$100',
+      '₹5,000 – ₹20,000 / $100–250',
+      '₹20,000 – ₹50,000 / $250–600',
+      '₹50,000+ / $600+',
+      'Flexible / Let\'s Discuss'
     ]
   }
 };
